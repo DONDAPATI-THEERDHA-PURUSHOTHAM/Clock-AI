@@ -1,0 +1,263 @@
+<aiml version="1.0.1" encoding="UTF-8">
+    <!-- GREETINGS & INFO -->
+    <category>
+        <pattern>HELLO</pattern>
+        <template>Hello! I am your Clock Utility assistant. How can I help you today?</template>
+    </category>
+
+    <category>
+        <pattern>HI</pattern>
+        <template><srai>HELLO</srai></template>
+    </category>
+
+    <category>
+        <pattern>HEY</pattern>
+        <template><srai>HELLO</srai></template>
+    </category>
+
+    <category>
+        <pattern>HELP</pattern>
+        <template>
+            I can help you manage your Clock Suite! Try saying:
+            - "set alarm for 08:30 AM" or "show alarms"
+            - "what time is it in Tokyo" or "add Bangkok"
+            - "start stopwatch", "lap", or "reset stopwatch"
+            - "start timer for 10 minutes"
+            - "switch view" to toggle between Phone and Desktop layout.
+        </template>
+    </category>
+
+    <category>
+        <pattern>WHO ARE YOU</pattern>
+        <template>I am the Clock Companion bot, built in Python using AIML. I run commands on your clock app!</template>
+    </category>
+
+    <category>
+        <pattern>WHAT IS YOUR NAME</pattern>
+        <template><srai>WHO ARE YOU</srai></template>
+    </category>
+
+    <!-- ALARM CONTROLS -->
+    <category>
+        <pattern>SET ALARM FOR * *</pattern>
+        <template>
+            Setting an alarm for <star index="1"/> <star index="2"/>.
+            <action type="set_alarm" time="<star index="1"/>" ampm="<star index="2"/>"/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>SET ALARM AT * *</pattern>
+        <template><srai>SET ALARM FOR <star index="1"/> <star index="2"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>CREATE ALARM FOR * *</pattern>
+        <template><srai>SET ALARM FOR <star index="1"/> <star index="2"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>SHOW ALARMS</pattern>
+        <template>
+            Here are your current alarms.
+            <action type="show_tab" tab="alarm"/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>LIST ALARMS</pattern>
+        <template><srai>SHOW ALARMS</srai></template>
+    </category>
+
+    <category>
+        <pattern>DELETE ALARMS</pattern>
+        <template>
+            Clearing your alarms.
+            <action type="delete_alarms"/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>DELETE ALARM</pattern>
+        <template><srai>DELETE ALARMS</srai></template>
+    </category>
+
+    <!-- WORLD CLOCK CONTROLS -->
+    <category>
+        <pattern>WHAT TIME IS IT IN *</pattern>
+        <template>
+            Checking the time in <star/>...
+            <action type="get_world_time" city="<star/>"/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>TIME IN *</pattern>
+        <template><srai>WHAT TIME IS IT IN <star/></srai></template>
+    </category>
+
+    <category>
+        <pattern>ADD CITY *</pattern>
+        <template>
+            Adding <star/> to your tracked world clocks.
+            <action type="add_city" city="<star/>"/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>TRACK CITY *</pattern>
+        <template><srai>ADD CITY <star/></srai></template>
+    </category>
+
+    <category>
+        <pattern>ADD *</pattern>
+        <template><srai>ADD CITY <star/></srai></template>
+    </category>
+
+    <category>
+        <pattern>SHOW WORLD CLOCKS</pattern>
+        <template>
+            Switching to World Clock view.
+            <action type="show_tab" tab="world_clock"/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>SHOW WORLD CLOCK</pattern>
+        <template><srai>SHOW WORLD CLOCKS</srai></template>
+    </category>
+
+    <!-- STOPWATCH CONTROLS -->
+    <category>
+        <pattern>START STOPWATCH</pattern>
+        <template>
+            Starting the stopwatch.
+            <action type="stopwatch" cmd="start"/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>STOP STOPWATCH</pattern>
+        <template>
+            Stopping the stopwatch.
+            <action type="stopwatch" cmd="stop"/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>PAUSE STOPWATCH</pattern>
+        <template><srai>STOP STOPWATCH</srai></template>
+    </category>
+
+    <category>
+        <pattern>LAP</pattern>
+        <template>
+            Recording lap.
+            <action type="stopwatch" cmd="lap"/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>LAP STOPWATCH</pattern>
+        <template><srai>LAP</srai></template>
+    </category>
+
+    <category>
+        <pattern>RESET STOPWATCH</pattern>
+        <template>
+            Resetting the stopwatch.
+            <action type="stopwatch" cmd="reset"/>
+        </template>
+    </category>
+
+    <!-- TIMER CONTROLS -->
+    <category>
+        <pattern>START TIMER FOR * MINUTES</pattern>
+        <template>
+            Starting a timer for <star/> minutes.
+            <action type="start_timer" duration="<star/>" unit="minutes"/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>START TIMER FOR * MINS</pattern>
+        <template><srai>START TIMER FOR <star/> MINUTES</srai></template>
+    </category>
+
+    <category>
+        <pattern>SET TIMER FOR * MINUTES</pattern>
+        <template><srai>START TIMER FOR <star/> MINUTES</srai></template>
+    </category>
+
+    <category>
+        <pattern>START TIMER FOR * SECONDS</pattern>
+        <template>
+            Starting a timer for <star/> seconds.
+            <action type="start_timer" duration="<star/>" unit="seconds"/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>START TIMER FOR * SECS</pattern>
+        <template><srai>START TIMER FOR <star/> SECONDS</srai></template>
+    </category>
+
+    <category>
+        <pattern>SET TIMER FOR * SECONDS</pattern>
+        <template><srai>START TIMER FOR <star/> SECONDS</srai></template>
+    </category>
+
+    <category>
+        <pattern>STOP TIMER</pattern>
+        <template>
+            Stopping the timer.
+            <action type="stop_timer"/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>CANCEL TIMER</pattern>
+        <template><srai>STOP TIMER</srai></template>
+    </category>
+
+    <!-- VIEW toggles -->
+    <category>
+        <pattern>SWITCH VIEW</pattern>
+        <template>
+            Toggling between mobile and desktop simulator layouts.
+            <action type="toggle_layout"/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>TOGGLE VIEW</pattern>
+        <template><srai>SWITCH VIEW</srai></template>
+    </category>
+
+    <category>
+        <pattern>TOGGLE LAYOUT</pattern>
+        <template><srai>SWITCH VIEW</srai></template>
+    </category>
+
+    <!-- SETTINGS / RESET -->
+    <category>
+        <pattern>RESET ALL DATA</pattern>
+        <template>
+            Resetting clock suite data.
+            <action type="reset_data"/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>CLEAR DATA</pattern>
+        <template><srai>RESET ALL DATA</srai></template>
+    </category>
+
+    <!-- FALLBACK -->
+    <category>
+        <pattern>*</pattern>
+        <template>
+            I'm not sure how to process "<star/>". Say "help" to see a list of commands, or try "set alarm for 08:00 AM".
+        </template>
+    </category>
+</aiml>
